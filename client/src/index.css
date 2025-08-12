@@ -1,0 +1,332 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 142 76% 36%; /* Municipal Green #16A34A */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 152 81% 96%; /* Light Green Background */
+  --secondary-foreground: 152 100% 15%;
+  --accent: 213 94% 68%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 213 94% 68%;
+  --radius: 0.5rem;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 142 76% 36%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 142 76% 36%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 142 76% 36%;
+  
+  /* Healthcare specific colors */
+  --medical-blue: 213 94% 68%; /* #3B82F6 */
+  --health-green: 142 76% 36%; /* #16A34A - Municipal Green */
+  --urgency-red: 0 84% 60%; /* #EF4444 */
+  --warning: 38 92% 50%; /* #F59E0B */
+  --warning-foreground: 48 96% 89%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 213 94% 68%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Healthcare themed components */
+  .medical-blue {
+    color: hsl(var(--medical-blue));
+  }
+  
+  .bg-medical-blue {
+    background-color: hsl(var(--medical-blue));
+  }
+  
+  .health-green {
+    color: hsl(var(--health-green));
+  }
+  
+  .bg-health-green {
+    background-color: hsl(var(--health-green));
+  }
+  
+  .urgency-red {
+    color: hsl(var(--urgency-red));
+  }
+  
+  .bg-urgency-red {
+    background-color: hsl(var(--urgency-red));
+  }
+
+  /* Warning colors for urgent requests */
+  .warning-50 {
+    background-color: hsl(48 96% 89%);
+  }
+  
+  .warning-100 {
+    background-color: hsl(48 96% 82%);
+  }
+  
+  .warning-200 {
+    background-color: hsl(48 96% 75%);
+  }
+  
+  .warning-500 {
+    background-color: hsl(var(--warning));
+  }
+  
+  .warning-600 {
+    background-color: hsl(45 93% 47%);
+  }
+  
+  .warning-700 {
+    background-color: hsl(43 96% 42%);
+  }
+  
+  .warning-800 {
+    background-color: hsl(42 87% 35%);
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    .print-only {
+      display: block !important;
+    }
+    
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    
+    .print-content {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .signature-line {
+      border-bottom: 1px solid #000;
+      width: 200px;
+      display: inline-block;
+      margin: 20px 0 5px 0;
+    }
+  }
+
+  /* Enhanced form styling for healthcare context */
+  .form-field {
+    @apply space-y-2;
+  }
+  
+  .form-label {
+    @apply text-sm font-medium text-gray-700;
+  }
+  
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors;
+  }
+  
+  .form-select {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-white;
+  }
+
+  /* Status badge variants */
+  .status-received {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .status-accepted {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .status-confirmed {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .status-completed {
+    @apply bg-purple-100 text-purple-800;
+  }
+  
+  .status-urgent {
+    @apply bg-red-100 text-red-800;
+  }
+
+  /* Card variants for different sections */
+  .health-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+  }
+  
+  .urgent-card {
+    @apply bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg;
+  }
+  
+  .info-card {
+    @apply bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg;
+  }
+
+  /* Button variants for healthcare context */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-health-green text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2;
+  }
+  
+  .btn-urgent {
+    @apply bg-urgency-red text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+  }
+  
+  .btn-warning {
+    @apply bg-warning text-white hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2;
+  }
+
+  /* Layout helpers */
+  .container-healthcare {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .header-healthcare {
+    @apply bg-white shadow-sm border-b border-gray-200;
+  }
+  
+  .sidebar-healthcare {
+    @apply w-64 bg-white shadow-lg border-r border-gray-200;
+  }
+
+  /* Enhanced accessibility and focus states */
+  .focus-healthcare:focus {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+  }
+  
+  /* Typography enhancements */
+  .text-medical-title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  
+  .text-medical-subtitle {
+    @apply text-lg font-semibold text-gray-700;
+  }
+  
+  .text-medical-body {
+    @apply text-sm text-gray-600;
+  }
+  
+  .text-medical-caption {
+    @apply text-xs text-gray-500;
+  }
+
+  /* Animation enhancements for better UX */
+  .transition-healthcare {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .hover-lift:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+  
+  /* Grid system for healthcare layouts */
+  .grid-healthcare-main {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+  }
+  
+  .grid-healthcare-stats {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+  }
+  
+  .grid-healthcare-cards {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  /* Loading states */
+  .loading-healthcare {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+  
+  /* Error states */
+  .error-healthcare {
+    @apply bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg;
+  }
+  
+  /* Success states */
+  .success-healthcare {
+    @apply bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg;
+  }
+}
+
+/* Additional utility classes for healthcare context */
+@layer utilities {
+  .bg-gradient-healthcare {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--health-green)) 100%);
+  }
+  
+  .shadow-healthcare {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .border-healthcare {
+    border-color: hsl(var(--border));
+  }
+  
+  /* Responsive utilities for healthcare layouts */
+  .responsive-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .responsive-margin {
+    @apply mx-4 sm:mx-6 lg:mx-8;
+  }
+}
